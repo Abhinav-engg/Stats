@@ -14,7 +14,9 @@ import androidx.compose.ui.Modifier
 import com.abhinav.stats.ui.theme.Background
 
 @Composable
-fun LoginScreen(whenContinueIsClicked: (String) -> Unit = {}) {
+fun LoginScreen(whenContinueIsClicked: (String) -> Unit = {
+
+}) {
     var username by remember { mutableStateOf("") }
 
     Scaffold(containerColor = Background) { padding ->
