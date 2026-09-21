@@ -48,6 +48,8 @@ fun HomeScreen(username: String) {
                 TopLanguagesCard(modifier = Modifier.weight(1f)
                     .fillMaxHeight())
             }
+            Spacer(modifier = Modifier.height(20.dp))
+            ActivitySubmissionsCard()
         }
     }
 }

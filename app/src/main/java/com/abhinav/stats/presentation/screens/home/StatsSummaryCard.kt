@@ -112,33 +112,4 @@ fun StatsSummaryCard() {
     }
 }
 
-@Composable
-fun DifficultyProgressRow(label: String, solved: Int, total: Int, color: Color) {
-    val progress = solved.toFloat() / total
 
-    Column(modifier = Modifier.fillMaxWidth()) {
-        Row(modifier = Modifier.fillMaxWidth()) {
-            Text(text = label, color = color, fontWeight = FontWeight.SemiBold)
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = "$solved / $total",
-                color = TextSecondary,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp)
-                .height(10.dp)
-                .background(Divider, RoundedCornerShape(12.dp))
-        ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(progress)
-                    .height(10.dp)
-                    .background(color, RoundedCornerShape(12.dp))
-            )
-        }
-    }
-}
