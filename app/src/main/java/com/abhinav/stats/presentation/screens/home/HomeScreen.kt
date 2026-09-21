@@ -1,5 +1,6 @@
 package com.abhinav.stats.presentation.screens.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -25,31 +26,35 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(username: String) {
-    Scaffold(topBar={HomeTopAppBar(username = username) }) { paddingValues ->
+fun HomeScreen(
+    username: String,
+    onActivityHistoryClick: () -> Unit = {}
+) {
+    Scaffold(topBar = { HomeTopAppBar(username = username) }) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(paddingValues)
+
                 .padding(16.dp)
                 .verticalScroll(rememberScrollState()),
-            horizontalAlignment=Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             StatsSummaryCard()
             Spacer(modifier = Modifier.height(20.dp))
             Row(
-                modifier = Modifier.fillMaxWidth()
-                    .height(IntrinsicSize.Max),
+                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                BadgesCard(modifier = Modifier.weight(1f)
-                    .fillMaxHeight()
-                )
-                TopLanguagesCard(modifier = Modifier.weight(1f)
-                    .fillMaxHeight())
+                BadgesCard(modifier = Modifier.weight(1f).fillMaxHeight())
+                TopLanguagesCard(modifier = Modifier.weight(1f).fillMaxHeight())
             }
             Spacer(modifier = Modifier.height(20.dp))
-            ActivitySubmissionsCard()
+            ActivitySubmissionCard(
+                modifier = Modifier.fillMaxWidth(),
+                onCardClick = onActivityHistoryClick
+            )
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

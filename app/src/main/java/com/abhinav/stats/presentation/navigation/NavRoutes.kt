@@ -1,12 +1,21 @@
 package com.abhinav.stats.presentation.navigation
 
-import android.net.Uri
+import kotlinx.serialization.Serializable
 
-object NavRoutes {
-    const val LOGIN = "login"
-    const val HOME = "home/{username}"
+sealed interface NavRoutes {
 
-    fun home(username: String): String {
-        return "home/${Uri.encode(username)}"
-    }
+    @Serializable
+    data object Login : NavRoutes
+
+    @Serializable
+    data class Home(val username: String) : NavRoutes
+
+    @Serializable
+    data object Problems : NavRoutes
+
+    @Serializable
+    data object Settings : NavRoutes
+
+    @Serializable
+    data object ActivityHistory : NavRoutes
 }

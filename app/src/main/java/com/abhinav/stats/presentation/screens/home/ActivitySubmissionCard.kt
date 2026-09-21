@@ -2,6 +2,7 @@ package com.abhinav.stats.presentation.screens.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -64,11 +65,11 @@ fun textColorFor(background: Color): Color =
     if (background == Color(0xFFE7E9ED) || background == Color(0xFFBFEACB)) TextPrimary else Color.White
 
 @Composable
-fun ActivitySubmissionsCard(modifier: Modifier = Modifier) {
+fun ActivitySubmissionCard(modifier: Modifier = Modifier,onCardClick: () -> Unit = {}) {
     var monthIndex by remember { mutableIntStateOf(0) }
 
     Card(
-        modifier = modifier,
+        modifier = modifier.clickable(onClick = onCardClick),
         shape = RoundedCornerShape(20.dp),
         colors = CardDefaults.cardColors(containerColor = Surface),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)

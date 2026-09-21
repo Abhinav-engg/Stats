@@ -1,7 +1,5 @@
 package com.abhinav.stats.presentation.screens.activityhistory
 
-
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -30,12 +28,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abhinav.stats.presentation.components.CalendarGrid
-import com.abhinav.stats.presentation.screens.home.HeatmapLegend
-import com.abhinav.stats.presentation.screens.home.monthDaysInMonth
 import com.abhinav.stats.presentation.screens.home.monthLabels
-import com.abhinav.stats.presentation.screens.home.monthStartIndex
-import com.abhinav.stats.presentation.screens.home.monthStartOffset
 import com.abhinav.stats.presentation.screens.home.monthSubmissions
+import com.abhinav.stats.presentation.screens.home.monthDaysInMonth
+import com.abhinav.stats.presentation.screens.home.monthStartOffset
+import com.abhinav.stats.presentation.screens.home.monthStartIndex
+import com.abhinav.stats.presentation.screens.home.HeatmapLegend
 import com.abhinav.stats.ui.theme.Background
 import com.abhinav.stats.ui.theme.StatsTheme
 import com.abhinav.stats.ui.theme.Surface
@@ -61,7 +59,7 @@ fun ActivityHistoryScreen(onBackClick: () -> Unit = {}) {
     ) { paddingValues ->
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .background(Background)
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
@@ -110,13 +108,5 @@ private fun MonthHistoryCard(index: Int) {
 
             HeatmapLegend()
         }
-    }
-}
-
-@Preview(showBackground = true, widthDp = 380, heightDp = 900)
-@Composable
-private fun ActivityHistoryScreenPreview() {
-    StatsTheme {
-        ActivityHistoryScreen()
     }
 }
