@@ -1,5 +1,6 @@
 package com.abhinav.stats.presentation.navigation
 
+import android.R.id.home
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -19,6 +20,7 @@ import androidx.navigation.toRoute
 import com.abhinav.stats.presentation.screens.activityhistory.ActivityHistoryScreen
 import com.abhinav.stats.presentation.screens.home.HomeScreen
 import com.abhinav.stats.presentation.screens.login.LoginScreen
+import com.abhinav.stats.presentation.screens.problems.SolvedProblems
 
 
 @Composable
@@ -72,7 +74,7 @@ fun StatsNavGraph() {
             }
 
             composable<NavRoutes.Problems> {
-
+                SolvedProblems(username = currentUsername)
             }
 
             composable<NavRoutes.Settings> {
