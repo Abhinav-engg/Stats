@@ -21,6 +21,7 @@ import com.abhinav.stats.presentation.screens.activityhistory.ActivityHistoryScr
 import com.abhinav.stats.presentation.screens.home.HomeScreen
 import com.abhinav.stats.presentation.screens.login.LoginScreen
 import com.abhinav.stats.presentation.screens.problems.SolvedProblems
+import com.abhinav.stats.presentation.screens.settings.SettingsScreen
 
 
 @Composable
@@ -30,7 +31,7 @@ fun StatsNavGraph() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
 
-    // Keep the last-known username so the bottom bar can navigate back to Home correctly
+
     var currentUsername by remember { mutableStateOf("") }
 
     val showBottomBar = currentDestination?.hierarchy?.any {
@@ -76,9 +77,8 @@ fun StatsNavGraph() {
             composable<NavRoutes.Problems> {
                 SolvedProblems(username = currentUsername)
             }
-
             composable<NavRoutes.Settings> {
-
+                SettingsScreen(username = currentUsername)
             }
 
             composable<NavRoutes.ActivityHistory> {
@@ -86,6 +86,8 @@ fun StatsNavGraph() {
                     onBackClick = { navController.popBackStack() }
                 )
             }
+
+
         }
     }
 }

@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.Text
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abhinav.stats.data.MockData
@@ -41,7 +43,7 @@ fun StatsCircle() {
         Canvas(modifier = Modifier.fillMaxSize()) {
             val strokeWidth = 14.dp.toPx()
             val circleSize = size.minDimension - strokeWidth
-            val topLeft = androidx.compose.ui.geometry.Offset(strokeWidth / 2, strokeWidth / 2)
+            val topLeft = Offset(strokeWidth / 2, strokeWidth / 2)
 
             var startAngle = -90f
             solvedProblems.forEachIndexed { index, solved ->
@@ -55,7 +57,7 @@ fun StatsCircle() {
                     sweepAngle = categorySweep,
                     useCenter = false,
                     topLeft = topLeft,
-                    size = androidx.compose.ui.geometry.Size(circleSize, circleSize),
+                    size = Size(circleSize, circleSize),
                     style = Stroke(strokeWidth, cap = StrokeCap.Round)
                 )
                 drawArc(
@@ -64,7 +66,7 @@ fun StatsCircle() {
                     sweepAngle = solvedSweep,
                     useCenter = false,
                     topLeft = topLeft,
-                    size = androidx.compose.ui.geometry.Size(circleSize, circleSize),
+                    size = Size(circleSize, circleSize),
                     style = Stroke(strokeWidth, cap = StrokeCap.Round)
                 )
                 startAngle += categorySweep + 4f

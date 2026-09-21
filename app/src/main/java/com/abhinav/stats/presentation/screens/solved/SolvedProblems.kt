@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.abhinav.stats.data.Difficulty
 import com.abhinav.stats.data.MockData
 import com.abhinav.stats.data.Submission
-import com.abhinav.stats.presentation.screens.home.HomeTopAppBar
+
 import com.abhinav.stats.ui.theme.Background
 import com.abhinav.stats.ui.theme.Divider
 import com.abhinav.stats.ui.theme.Secondary
@@ -40,6 +40,7 @@ import com.abhinav.stats.ui.theme.TextPrimary
 import com.abhinav.stats.ui.theme.TextSecondary
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import com.abhinav.stats.presentation.components.HomeTopAppBar
 
 fun colorFor(difficulty: Difficulty) = when (difficulty) {
     Difficulty.Easy -> Secondary

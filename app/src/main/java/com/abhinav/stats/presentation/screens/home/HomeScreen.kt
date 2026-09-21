@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.abhinav.stats.presentation.components.HomeTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,24 +60,4 @@ fun HomeScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HomeTopAppBar(username: String) {
-    TopAppBar(
-        title = {
-            Text(
-                text = "@$username",
-                fontWeight = FontWeight.Bold,
-                color = Color.DarkGray
-            )
-        },
-        actions = {
-            Text(
-                text = "🔥 7 day streak",
-                modifier = Modifier.padding(end = 16.dp),
-                fontWeight = FontWeight.Medium,
-                color = Color.DarkGray
-            )
-        }
-    )
-}
+
