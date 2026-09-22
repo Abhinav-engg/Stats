@@ -18,6 +18,10 @@ import androidx.compose.ui.unit.sp
 fun PortraitContent(
     username: String,
     onUsernameChange: (String) -> Unit,
+    usernameError: String?,
+    password: String,
+    onPasswordChange: (String) -> Unit,
+    passwordError: String?,
     onContinueClick: () -> Unit
 ) {
     Column(
@@ -33,6 +37,10 @@ fun PortraitContent(
         UsernameCard(
             username = username,
             onUsernameChange = onUsernameChange,
+            usernameError = usernameError,
+            password = password,
+            onPasswordChange = onPasswordChange,
+            passwordError = passwordError,
             modifier = Modifier.fillMaxWidth()
         )
         Spacer(modifier = Modifier.height(20.dp))

@@ -3,40 +3,46 @@ package com.abhinav.stats.presentation.screens.login
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.abhinav.stats.ui.theme.Background
 
 @Composable
-fun LoginScreen(whenContinueIsClicked: (String) -> Unit = {
-
-}) {
-    var username by remember { mutableStateOf("") }
-
+fun LoginScreen(
+    viewModel: LoginViewModel = viewModel(),
+    whenContinueIsClicked: (String) -> Unit = {}
+) {
     Scaffold(containerColor = Background) { padding ->
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Background)
                 .padding(padding)
+                .imePadding()
         ) {
             if (maxWidth > maxHeight) {
                 LandscapeContent(
-                    username = username,
-                    onUsernameChange = { username = it },
-                    onContinueClick = { whenContinueIsClicked(username) }
+                    username = viewModel.username,
+                    onUsernameChange = viewModel::onUsernameChange,
+                    usernameError = viewModel.usernameError,
+                    password = viewModel.password,
+                    onPasswordChange = viewModel::onPasswordChange,
+                    passwordError = viewModel.passwordError,
+                    onContinueClick = { viewModel.onContinueClick(whenContinueIsClicked) }
                 )
             } else {
                 PortraitContent(
-                    username = username,
-                    onUsernameChange = { username = it },
-                    onContinueClick = { whenContinueIsClicked(username) }
+                    username = viewModel.username,
+                    onUsernameChange = viewModel::onUsernameChange,
+                    usernameError = viewModel.usernameError,
+                    password = viewModel.password,
+                    onPasswordChange = viewModel::onPasswordChange,
+                    passwordError = viewModel.passwordError,
+                    onContinueClick = { viewModel.onContinueClick(whenContinueIsClicked) }
                 )
             }
         }

@@ -23,6 +23,10 @@ import androidx.compose.ui.unit.sp
 fun LandscapeContent(
     username: String,
     onUsernameChange: (String) -> Unit,
+    usernameError: String?,
+    password: String,
+    onPasswordChange: (String) -> Unit,
+    passwordError: String?,
     onContinueClick: () -> Unit
 ) {
     Row(
@@ -53,6 +57,10 @@ fun LandscapeContent(
             UsernameCard(
                 username = username,
                 onUsernameChange = onUsernameChange,
+                usernameError = usernameError,
+                password = password,
+                onPasswordChange = onPasswordChange,
+                passwordError = passwordError,
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))

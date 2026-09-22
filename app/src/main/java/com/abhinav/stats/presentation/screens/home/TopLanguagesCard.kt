@@ -23,7 +23,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abhinav.stats.data.LanguageStat
-import com.abhinav.stats.data.MockData
 import com.abhinav.stats.ui.theme.Background
 import com.abhinav.stats.ui.theme.Divider
 import com.abhinav.stats.ui.theme.Primary
@@ -33,7 +32,11 @@ import com.abhinav.stats.ui.theme.TextPrimary
 import com.abhinav.stats.ui.theme.TextSecondary
 
 @Composable
-fun TopLanguagesCard(modifier: Modifier = Modifier) {
+fun TopLanguagesCard(
+    topLanguages: List<LanguageStat>,
+    coreTopics: List<String>,
+    modifier: Modifier = Modifier
+) {
     Card(modifier, RoundedCornerShape(20.dp), CardDefaults.cardColors(containerColor = Surface)) {
         Column(modifier = Modifier.padding(12.dp)) {
             Text(
@@ -43,7 +46,7 @@ fun TopLanguagesCard(modifier: Modifier = Modifier) {
                 color = TextPrimary
             )
 
-            MockData.topLanguages.forEachIndexed { index, language ->
+            topLanguages.forEachIndexed { index, language ->
                 val dotColor = when (index) {
                     0 -> Primary
                     1 -> Secondary
@@ -59,17 +62,18 @@ fun TopLanguagesCard(modifier: Modifier = Modifier) {
                     .fillMaxWidth()
                     .padding(top = 8.dp),
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {MockData.coreTopics.forEach { topic ->
-                Text(
-                    topic,
-                    modifier = Modifier.weight(1f)
-                        .background(Background, RoundedCornerShape(12.dp))
-                        .padding(vertical = 6.dp),
-                    color = TextSecondary,
-                    fontSize = 12.sp,
-                    textAlign = TextAlign.Center
-                )
-            }
+            ) {
+                coreTopics.forEach { topic ->
+                    Text(
+                        topic,
+                        modifier = Modifier.weight(1f)
+                            .background(Background, RoundedCornerShape(12.dp))
+                            .padding(vertical = 6.dp),
+                        color = TextSecondary,
+                        fontSize = 12.sp,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
     }

@@ -17,7 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.abhinav.stats.presentation.screens.activityhistory.ActivityHistoryScreen
+//import com.abhinav.stats.presentation.screens.activityhistory.ActivityHistoryScreen
 import com.abhinav.stats.presentation.screens.home.HomeScreen
 import com.abhinav.stats.presentation.screens.login.LoginScreen
 import com.abhinav.stats.presentation.screens.problems.SolvedProblems
@@ -82,9 +82,9 @@ fun StatsNavGraph() {
             }
 
             composable<NavRoutes.ActivityHistory> {
-                ActivityHistoryScreen(
-                    onBackClick = { navController.popBackStack() }
-                )
+//                ActivityHistoryScreen(
+//                    onBackClick = { navController.popBackStack() }
+//                )
             }
 
 
