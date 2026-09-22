@@ -57,7 +57,7 @@ fun HomeScreen(
                     modifier = Modifier.weight(1f).fillMaxHeight()
                 )
             }
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(60.dp))
 //            ActivitySubmissionCard(
 //                modifier = Modifier.fillMaxWidth(),
 //                onCardClick = onActivityHistoryClick

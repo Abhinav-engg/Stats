@@ -4,12 +4,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.abhinav.stats.data.Badge
 import com.abhinav.stats.data.LanguageStat
 import com.abhinav.stats.data.MockData
 import com.abhinav.stats.data.UserStats
+import com.abhinav.stats.data.remote.LeetCodeRepository
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val repository: LeetCodeRepository = LeetCodeRepository()
+) : ViewModel() {
 
     var userStats by mutableStateOf(MockData.userStats)
         private set
@@ -23,10 +28,22 @@ class HomeViewModel : ViewModel() {
     var coreTopics by mutableStateOf(emptyList<String>())
         private set
 
+    var badgesLoading by mutableStateOf(false)
+        private set
+
     fun loadStats(username: String) {
         userStats = MockData.userStats
-        badges = MockData.badges
         topLanguages = MockData.topLanguages
         coreTopics = MockData.coreTopics
+
+        viewModelScope.launch {
+            badgesLoading = true
+            badges = try {
+                repository.fetchBadges(username)
+            } catch (e: Exception) {
+                emptyList()
+            }
+            badgesLoading = false
+        }
     }
 }

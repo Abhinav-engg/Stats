@@ -16,13 +16,6 @@ object MockData {
         paceMetric = "32 Daily Solves"
     )
 
-    val badges = listOf(
-        Badge("50 Days"),
-        Badge("Guardian"),
-        Badge("Knight"),
-        Badge("SQL 50"),
-        Badge("Oct Daily", isRecent = true)
-    )
 
     val topLanguages = listOf(
         LanguageStat("Python", 492),

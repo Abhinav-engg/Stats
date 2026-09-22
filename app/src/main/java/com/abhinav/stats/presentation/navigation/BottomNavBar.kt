@@ -66,7 +66,7 @@ fun BottomNavBar(
                 onClick = {
                     if (!selected) {
                         navController.navigate(item.route(currentUsername)) {
-                            popUpTo(navController.graph.findStartDestination().id) {
+                            popUpTo(NavRoutes.Home(currentUsername)) {
                                 saveState = true
                             }
                             launchSingleTop = true

@@ -21,12 +21,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.abhinav.stats.data.Badge
 import com.abhinav.stats.ui.theme.Background
 import com.abhinav.stats.ui.theme.Primary
 import com.abhinav.stats.ui.theme.TextPrimary
 
 @Composable
-fun BadgeItem(title: String, modifier: Modifier = Modifier) {
+fun BadgeItem(badge: Badge, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier.height(100.dp).background(Background, RoundedCornerShape(16.dp)).padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -36,8 +37,8 @@ fun BadgeItem(title: String, modifier: Modifier = Modifier) {
             modifier = Modifier.size(44.dp).background(Primary, CircleShape),
             contentAlignment = Alignment.Center
         ) {
-            Icon(Icons.Default.EmojiEvents, "$title badge", tint = Color.White)
+            Icon(Icons.Default.EmojiEvents, "${badge.name} badge", tint = Color.White)
         }
-        Text(title, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = TextPrimary, textAlign = TextAlign.Center)
+        Text(badge.name, fontSize = 13.sp, fontWeight = FontWeight.SemiBold, color = TextPrimary, textAlign = TextAlign.Center)
     }
 }
