@@ -4,9 +4,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -45,13 +48,13 @@ fun BadgesCard(badges: List<Badge>, modifier: Modifier = Modifier) {
                 Text(badges.size.toString(), color = TextSecondary)
             }
 
-            badges.chunked(2).forEach { badgeRow ->
+            badges.take(4).chunked(2).forEach { badgeRow ->
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
+                    modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Min).padding(top = 12.dp),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     badgeRow.forEach { badge ->
-                        BadgeItem(badge, Modifier.weight(1f))
+                        BadgeItem(badge, Modifier.weight(1f).fillMaxHeight())
                     }
                     if (badgeRow.size == 1) Spacer(modifier = Modifier.weight(1f))
                 }

@@ -21,13 +21,5 @@ fun HomeTopAppBar(username: String) {
                 color = Color.DarkGray
             )
         },
-        actions = {
-            Text(
-                text = "🔥 7 day streak",
-                modifier = Modifier.padding(end = 16.dp),
-                fontWeight = FontWeight.Medium,
-                color = Color.DarkGray
-            )
-        }
     )
 }

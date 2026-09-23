@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abhinav.stats.data.LanguageStat
@@ -55,26 +56,7 @@ fun TopLanguagesCard(
                 LanguageRow(language, dotColor)
             }
 
-            HorizontalDivider(Modifier.padding(vertical = 12.dp), color = Divider)
-            Text("Core topics", color = TextSecondary)
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 8.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                coreTopics.forEach { topic ->
-                    Text(
-                        topic,
-                        modifier = Modifier.weight(1f)
-                            .background(Background, RoundedCornerShape(12.dp))
-                            .padding(vertical = 6.dp),
-                        color = TextSecondary,
-                        fontSize = 12.sp,
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
+
         }
     }
 }
@@ -92,10 +74,19 @@ fun LanguageRow(language: LanguageStat, dotColor: Color) {
         Spacer(modifier = Modifier
             .size(12.dp)
             .background(dotColor, CircleShape))
-        Text(language.name, Modifier.padding(start = 8.dp), color = TextPrimary, fontSize = 14.sp)
-        Spacer(modifier = Modifier.weight(1f))
+        Text(
+            language.name,
+            modifier = Modifier
+                .padding(start = 8.dp)
+                .weight(1f),
+            color = TextPrimary,
+            fontSize = 14.sp,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
         Text(
             language.problemsSolved.toString(),
+            modifier = Modifier.padding(start = 8.dp),
             color = TextSecondary,
             fontWeight = FontWeight.SemiBold
         )

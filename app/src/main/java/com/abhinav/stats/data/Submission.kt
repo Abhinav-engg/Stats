@@ -1,11 +1,9 @@
 package com.abhinav.stats.data
 
 data class Submission(
-    val id: Int,
+    val id: String,
     val title: String,
-    val difficulty: Difficulty,
-    val tags: List<String>,
-    val timeAgo: String,
-    val runtime: String,
-    val beatsPercentage: String
+    val status: String,
+    val lang: String,
+    val timeAgo: String
 )

@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abhinav.stats.data.Badge
 import com.abhinav.stats.data.LanguageStat
-import com.abhinav.stats.data.MockData
 import com.abhinav.stats.data.UserStats
 import com.abhinav.stats.data.remote.LeetCodeRepository
+import com.abhinav.stats.data.remote.mock.MockData
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -32,8 +32,6 @@ class HomeViewModel(
         private set
 
     fun loadStats(username: String) {
-        userStats = MockData.userStats
-        topLanguages = MockData.topLanguages
         coreTopics = MockData.coreTopics
 
         viewModelScope.launch {
@@ -44,6 +42,22 @@ class HomeViewModel(
                 emptyList()
             }
             badgesLoading = false
+        }
+
+        viewModelScope.launch {
+            userStats = try {
+                repository.fetchUserStats(username)
+            } catch (e: Exception) {
+                MockData.userStats
+            }
+        }
+
+        viewModelScope.launch {
+            topLanguages = try {
+                repository.fetchTopLanguages(username)
+            } catch (e: Exception) {
+                emptyList()
+            }
         }
     }
 }

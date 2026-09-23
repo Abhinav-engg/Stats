@@ -43,20 +43,18 @@ fun HomeScreen(
         ) {
             StatsSummaryCard(userStats = viewModel.userStats)
             Spacer(modifier = Modifier.height(20.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth().height(IntrinsicSize.Max),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
+
                 BadgesCard(
                     badges = viewModel.badges,
-                    modifier = Modifier.weight(1f).fillMaxHeight()
+                    modifier = Modifier
                 )
+            Spacer(modifier = Modifier.height(20.dp))
                 TopLanguagesCard(
                     topLanguages = viewModel.topLanguages,
                     coreTopics = viewModel.coreTopics,
-                    modifier = Modifier.weight(1f).fillMaxHeight()
+                    modifier = Modifier
                 )
-            }
+
             Spacer(modifier = Modifier.height(60.dp))
 //            ActivitySubmissionCard(
 //                modifier = Modifier.fillMaxWidth(),
