@@ -18,4 +18,8 @@ sealed interface NavRoutes {
 
     @Serializable
     data object ActivityHistory : NavRoutes
+
+
+    @Serializable
+    data object AllBadges : NavRoutes
 }

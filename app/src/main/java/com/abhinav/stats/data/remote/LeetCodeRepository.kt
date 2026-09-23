@@ -80,4 +80,10 @@ class LeetCodeRepository(private val api: LeetCodeApiService = LeetCodeApi.servi
             else -> "${diffSeconds / 604800}w ago"
         }
     }
+
+
+    suspend fun fetchProfileRank(username: String): String? {
+        val profile = api.getProfile(username)
+        return profile.ranking?.let { "#${"%,d".format(it)}" }
+    }
 }

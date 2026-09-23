@@ -26,6 +26,7 @@ import com.abhinav.stats.presentation.components.HomeTopAppBar
 fun HomeScreen(
     username: String,
     viewModel: HomeViewModel = viewModel(),
+    onBadgesClick: () -> Unit = {},
     onActivityHistoryClick: () -> Unit = {}
 ) {
     LaunchedEffect(username) {
@@ -46,6 +47,7 @@ fun HomeScreen(
 
                 BadgesCard(
                     badges = viewModel.badges,
+                    onClick = onBadgesClick,
                     modifier = Modifier
                 )
             Spacer(modifier = Modifier.height(20.dp))
@@ -55,7 +57,7 @@ fun HomeScreen(
                     modifier = Modifier
                 )
 
-            Spacer(modifier = Modifier.height(60.dp))
+            Spacer(modifier = Modifier.height(80.dp))
 //            ActivitySubmissionCard(
 //                modifier = Modifier.fillMaxWidth(),
 //                onCardClick = onActivityHistoryClick

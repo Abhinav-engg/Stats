@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +19,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abhinav.stats.data.UserStats
@@ -72,22 +74,30 @@ fun StatsCircle(userStats: UserStats) {
             }
         }
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.widthIn(max = 130.dp)
+        ) {
             Text(
                 text = userStats.totalSolved.toString(),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = TextPrimary
+                color = TextPrimary,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
             Text(
                 text = "/ ${userStats.totalProblems} Solved",
                 fontSize = 14.sp,
                 color = TextSecondary,
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
             )
             Box(
                 modifier = Modifier
                     .padding(top = 8.dp)
+                    .widthIn(max = 120.dp)
                     .background(Background, RoundedCornerShape(8.dp))
                     .padding(horizontal = 10.dp, vertical = 6.dp)
             ) {
@@ -95,7 +105,10 @@ fun StatsCircle(userStats: UserStats) {
                     text = "${userStats.acceptanceRate} Acct.",
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Secondary
+                    color = Secondary,
+                    textAlign = TextAlign.Center,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }

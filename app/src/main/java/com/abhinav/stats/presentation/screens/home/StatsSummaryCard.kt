@@ -2,8 +2,11 @@ package com.abhinav.stats.presentation.screens.home
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -31,6 +34,7 @@ import com.abhinav.stats.ui.theme.Tertiary
 import com.abhinav.stats.ui.theme.TextPrimary
 import com.abhinav.stats.ui.theme.TextSecondary
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun StatsSummaryCard(userStats: UserStats) {
     Card(
@@ -40,13 +44,13 @@ fun StatsSummaryCard(userStats: UserStats) {
         border = BorderStroke(1.dp, Divider)
     ) {
         Column(modifier = Modifier.padding(20.dp)) {
-            Row(
+            FlowRow(
                 modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 Row(
                     modifier = Modifier
-                        .weight(1.5f)
                         .border(1.dp, Primary.copy(alpha = 0.45f), RoundedCornerShape(28.dp))
                         .padding(horizontal = 14.dp, vertical = 10.dp),
                     verticalAlignment = Alignment.CenterVertically
@@ -64,14 +68,21 @@ fun StatsSummaryCard(userStats: UserStats) {
                         fontSize = 14.sp
                     )
                 }
-                Spacer(modifier = Modifier.weight(0.1f))
-                Text(
-                    text = "Global Rank\n${userStats.globalRank}",
-                    modifier = Modifier.weight(0.85f),
-                    color = TextSecondary,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 14.sp
-                )
+
+                Column {
+                    Text(
+                        text = "Global Rank",
+                        color = TextSecondary,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 14.sp
+                    )
+                    Text(
+                        text = userStats.globalRank,
+                        color = TextSecondary,
+                        fontWeight = FontWeight.Medium,
+                        fontSize = 14.sp
+                    )
+                }
             }
 
             Box(

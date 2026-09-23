@@ -39,6 +39,7 @@ import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -50,6 +51,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.abhinav.stats.ui.theme.Primary
 import com.abhinav.stats.ui.theme.Surface
 import com.abhinav.stats.ui.theme.TextSecondary
@@ -58,11 +60,16 @@ import com.abhinav.stats.ui.theme.TextSecondary
 @Composable
 fun SettingsScreen(
     username: String = "abhinav",
+    viewModel: SettingsViewModel = viewModel(),
     modifier: Modifier = Modifier
 ) {
     var notifications by remember { mutableStateOf(true) }
     var dailyReminder by remember { mutableStateOf(false) }
     var autoSync by remember { mutableStateOf(true) }
+
+    LaunchedEffect(username) {
+        viewModel.loadProfile(username)
+    }
 
     Scaffold(
         modifier = modifier,
@@ -85,7 +92,7 @@ fun SettingsScreen(
                 .padding(horizontal = 16.dp)
                 .verticalScroll(rememberScrollState())
         ) {
-            ProfileHeader(username = username)
+            ProfileHeader(username = username, rank = viewModel.rank)
 
             Spacer(modifier = Modifier.height(20.dp))
 
@@ -181,7 +188,7 @@ fun SettingsScreen(
 }
 
 @Composable
-private fun ProfileHeader(username: String) {
+private fun ProfileHeader(username: String, rank: String?) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = Surface),
@@ -215,7 +222,7 @@ private fun ProfileHeader(username: String) {
                     color = Color.DarkGray
                 )
                 Text(
-                    text = "Rank #1,24,567  •  Joined 2024",
+                    text = rank?.let { "Rank $it" } ?: "Rank unavailable",
                     fontSize = 13.sp,
                     color = TextSecondary
                 )

@@ -1,6 +1,7 @@
 package com.abhinav.stats.presentation.screens.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,15 +38,23 @@ import com.abhinav.stats.ui.theme.TextPrimary
 import com.abhinav.stats.ui.theme.TextSecondary
 
 
-
 @Composable
-fun BadgesCard(badges: List<Badge>, modifier: Modifier = Modifier) {
-    Card(modifier, RoundedCornerShape(20.dp), CardDefaults.cardColors(containerColor = Surface)) {
+fun BadgesCard(badges: List<Badge>, onClick: () -> Unit = {}, modifier: Modifier = Modifier) {
+    Card(
+        modifier.clickable(onClick = onClick),
+        RoundedCornerShape(20.dp),
+        CardDefaults.cardColors(containerColor = Surface)
+    ) {
         Column(modifier = Modifier.padding(12.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 Text("Badges", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = TextPrimary)
                 Spacer(modifier = Modifier.weight(1f))
                 Text(badges.size.toString(), color = TextSecondary)
+                Icon(
+                    Icons.Default.ChevronRight,
+                    contentDescription = "View all badges",
+                    tint = TextSecondary
+                )
             }
 
             badges.take(4).chunked(2).forEach { badgeRow ->

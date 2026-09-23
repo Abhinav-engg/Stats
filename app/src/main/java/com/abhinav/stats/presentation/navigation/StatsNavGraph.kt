@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import com.abhinav.stats.presentation.screens.badges.AllBadgesScreen
 //import com.abhinav.stats.presentation.screens.activityhistory.ActivityHistoryScreen
 import com.abhinav.stats.presentation.screens.home.HomeScreen
 import com.abhinav.stats.presentation.screens.login.LoginScreen
@@ -70,6 +71,9 @@ fun StatsNavGraph() {
                     username = home.username,
                     onActivityHistoryClick = {
                         navController.navigate(NavRoutes.ActivityHistory)
+                    },
+                    onBadgesClick = {
+                        navController.navigate(NavRoutes.AllBadges)
                     }
                 )
             }
@@ -85,6 +89,13 @@ fun StatsNavGraph() {
 //                ActivityHistoryScreen(
 //                    onBackClick = { navController.popBackStack() }
 //                )
+            }
+
+            composable<NavRoutes.AllBadges> {
+                AllBadgesScreen(
+                    username = currentUsername,
+                    onBack = { navController.popBackStack() }
+                )
             }
 
 
