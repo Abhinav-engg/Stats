@@ -24,9 +24,6 @@ fun LandscapeContent(
     username: String,
     onUsernameChange: (String) -> Unit,
     usernameError: String?,
-    password: String,
-    onPasswordChange: (String) -> Unit,
-    passwordError: String?,
     onContinueClick: () -> Unit
 ) {
     Row(
@@ -58,9 +55,6 @@ fun LandscapeContent(
                 username = username,
                 onUsernameChange = onUsernameChange,
                 usernameError = usernameError,
-                password = password,
-                onPasswordChange = onPasswordChange,
-                passwordError = passwordError,
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))

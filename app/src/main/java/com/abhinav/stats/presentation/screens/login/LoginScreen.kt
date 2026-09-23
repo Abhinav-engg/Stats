@@ -29,9 +29,6 @@ fun LoginScreen(
                     username = viewModel.username,
                     onUsernameChange = viewModel::onUsernameChange,
                     usernameError = viewModel.usernameError,
-                    password = viewModel.password,
-                    onPasswordChange = viewModel::onPasswordChange,
-                    passwordError = viewModel.passwordError,
                     onContinueClick = { viewModel.onContinueClick(whenContinueIsClicked) }
                 )
             } else {
@@ -39,9 +36,6 @@ fun LoginScreen(
                     username = viewModel.username,
                     onUsernameChange = viewModel::onUsernameChange,
                     usernameError = viewModel.usernameError,
-                    password = viewModel.password,
-                    onPasswordChange = viewModel::onPasswordChange,
-                    passwordError = viewModel.passwordError,
                     onContinueClick = { viewModel.onContinueClick(whenContinueIsClicked) }
                 )
             }

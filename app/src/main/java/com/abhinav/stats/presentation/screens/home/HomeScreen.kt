@@ -1,11 +1,7 @@
 package com.abhinav.stats.presentation.screens.home
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -45,17 +41,17 @@ fun HomeScreen(
             StatsSummaryCard(userStats = viewModel.userStats)
             Spacer(modifier = Modifier.height(20.dp))
 
-                BadgesCard(
-                    badges = viewModel.badges,
-                    onClick = onBadgesClick,
-                    modifier = Modifier
-                )
+            BadgesCard(
+                badges = viewModel.badges,
+                onClick = onBadgesClick,
+                modifier = Modifier
+            )
             Spacer(modifier = Modifier.height(20.dp))
-                TopLanguagesCard(
-                    topLanguages = viewModel.topLanguages,
-                    coreTopics = viewModel.coreTopics,
-                    modifier = Modifier
-                )
+            TopLanguagesCard(
+                topLanguages = viewModel.topLanguages,
+                coreTopics = viewModel.coreTopics,
+                modifier = Modifier
+            )
 
             Spacer(modifier = Modifier.height(80.dp))
 //            ActivitySubmissionCard(

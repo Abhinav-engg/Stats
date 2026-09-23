@@ -10,23 +10,12 @@ class LoginViewModel : ViewModel() {
     var username by mutableStateOf("")
         private set
 
-    var password by mutableStateOf("")
-        private set
-
     var usernameError by mutableStateOf<String?>(null)
-        private set
-
-    var passwordError by mutableStateOf<String?>(null)
         private set
 
     fun onUsernameChange(newUsername: String) {
         username = newUsername
         usernameError = null
-    }
-
-    fun onPasswordChange(newPassword: String) {
-        password = newPassword
-        passwordError = null
     }
 
     fun onContinueClick(onSuccess: (String) -> Unit) {
@@ -39,13 +28,7 @@ class LoginViewModel : ViewModel() {
             else -> null
         }
 
-        passwordError = when {
-            password.isEmpty() -> "Password can't be empty"
-            password.length < 6 -> "Password must be at least 6 characters"
-            else -> null
-        }
-
-        if (usernameError == null && passwordError == null) {
+        if (usernameError == null) {
             onSuccess(trimmedUsername)
         }
     }

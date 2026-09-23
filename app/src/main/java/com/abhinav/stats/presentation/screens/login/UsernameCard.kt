@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AlternateEmail
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -22,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abhinav.stats.ui.theme.Background
@@ -37,9 +35,6 @@ fun UsernameCard(
     username: String,
     onUsernameChange: (String) -> Unit,
     usernameError: String?,
-    password: String,
-    onPasswordChange: (String) -> Unit,
-    passwordError: String?,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -85,53 +80,6 @@ fun UsernameCard(
                         tint = TextSecondary
                     )
                 },
-                shape = RoundedCornerShape(14.dp),
-                colors = OutlinedTextFieldDefaults.colors(
-                    focusedBorderColor = Primary,
-                    unfocusedBorderColor = Divider,
-                    focusedContainerColor = Background,
-                    unfocusedContainerColor = Background
-                )
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Spacer(modifier = Modifier.width(6.dp))
-                Text(
-                    text = "Password",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = TextPrimary
-                )
-            }
-            Spacer(modifier = Modifier.height(10.dp))
-            OutlinedTextField(
-                value = password,
-                onValueChange = onPasswordChange,
-                modifier = Modifier.fillMaxWidth(),
-                singleLine = true,
-                isError = passwordError != null,
-                supportingText = {
-                    if (passwordError != null) {
-                        Text(text = passwordError, color = Color.Red)
-                    }
-                },
-                placeholder = {
-                    Text(
-                        text = "Enter your password",
-                        color = TextSecondary.copy(alpha = 0.7f)
-                    )
-                },
-                leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Default.Lock,
-                        contentDescription = null,
-                        tint = TextSecondary
-                    )
-                },
-                visualTransformation = PasswordVisualTransformation(),
                 shape = RoundedCornerShape(14.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = Primary,

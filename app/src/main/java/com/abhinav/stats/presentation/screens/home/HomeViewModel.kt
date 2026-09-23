@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.abhinav.stats.data.Badge
 import com.abhinav.stats.data.LanguageStat
-import com.abhinav.stats.data.UserStats
 import com.abhinav.stats.data.remote.LeetCodeRepository
 import com.abhinav.stats.data.remote.mock.MockData
 import kotlinx.coroutines.launch
